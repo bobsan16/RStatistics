@@ -219,7 +219,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Всеки работен ден БНБ публикува на <a href="https://www.bnb.bg/Statistics/StExternalSector/StExchangeRates/StERForeignCurrencies/index.htm">интернет страницата си</a> курсове на българския лев към отделни чуждестранни валути. Данните могат да се изтеглят в xls, pdf, xml или csv формат. Примера функцията <strong>read.csv()</strong> включена в базовия пакет <strong>utils</strong> за да прочете данните за курса към долара за месец януари 2020 г. в csv формат.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="data.html#cb1-1" aria-hidden="true" tabindex="-1"></a>url_file_path <span class="ot">&lt;-</span> <span class="st">&quot;https://www.bnb.bg/Statistics/StExternalSector/StExchangeRates/StERForeignCurrencies/index.htm?downloadOper=true&amp;group1=second&amp;periodStartDays=01&amp;periodStartMonths=01&amp;periodStartYear=2020&amp;periodEndDays=31&amp;periodEndMonths=01&amp;periodEndYear=2020&amp;valutes=USD&amp;search=true&amp;showChart=false&amp;showChartButton=true&amp;type=CSV&quot;</span></span>
 <span id="cb1-2"><a href="data.html#cb1-2" aria-hidden="true" tabindex="-1"></a>bnb_cr_usd_data <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(url_file_path, <span class="at">header=</span> <span class="cn">FALSE</span>, <span class="at">skip =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p>пакета <strong>utils</strong> е част от системните библютеки в R и няма нужда предварително да бъде зареден в паметта чрез <strong>library()</strong>.</p>
+<p>пакета <strong>utils</strong> е част от системните библиотеки в R и няма нужда предварително да бъде зареден в паметта чрез <strong>library()</strong>. При зададените параметри <em>header= FALSE, skip = 2</em>, функцията <strong>read.csv()</strong> връща резултата с автоматично зададени имена на колоните.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="data.html#cb2-1" aria-hidden="true" tabindex="-1"></a>bnb_cr_usd_data</span></code></pre></div>
 <pre><code>##            V1   V2 V3      V4 V5
 ## 1  02.01.2020  USD  1 1.74737 NA
@@ -244,6 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 20 29.01.2020  USD  1 1.77787 NA
 ## 21 30.01.2020  USD  1 1.77335 NA
 ## 22 31.01.2020  USD  1 1.76966 NA</code></pre>
+<p>Пoради това, че файла който се изтегля от страницата на БНБ има четири разделителя (,), резултата върнат функцията <strong>read.csv()</strong> от e “data.frame” с пет колони, последатта от който не съдържа никакви стойности.</p>
 </div>
 <div id="tab-data-tsv" class="section level3" number="2.1.2">
 <h3><span class="header-section-number">2.1.2</span> Тab-separated values (TSV)</h3>
