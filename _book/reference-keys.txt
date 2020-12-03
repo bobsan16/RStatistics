@@ -6,10 +6,10 @@ tab-data-tsv
 web-data
 sdmx-data
 sdmx-data_about
-четене-на-sdmx-sdmx-data_read
+sdmx-data_read
 xbrl-data
-за-xbrl-xbrl-data_about
-четене-на-xbrl-xbrl-data_read
+xbrl-data_about
+xbrl-data_read
 ocr-data
 web_scraping-data
 processing
@@ -18,6 +18,3 @@ results
 results-RMarkdown
 Shiny-Shiny
 summary
-sdmx-data_read
-xbrl-data_about
-xbrl-data_read
