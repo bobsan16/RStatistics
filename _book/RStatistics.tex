@@ -1,0 +1,151 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+  \usepackage{amssymb}
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Статистика чрез R},
+  pdfauthor={Борис Велков},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{longtable,booktabs}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{Статистика чрез R}
+\author{Борис Велков}
+\date{2020-11-19}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{ux432ux44aux432ux435ux434ux435ux43dux438ux435}{%
+\chapter{Въведение}\label{ux432ux44aux432ux435ux434ux435ux43dux438ux435}}
+
+Целта на Ръководството е да бъде в помощ на статистици, иконометрици и анализатори при работата с R. Ръководството представя полезни техники за събиране, представяне и разпространение на статистически данни и няма за цел да запознае читателя с основите, синтаксиса или структурите на езика. В Интернет могат да се намерят много материали за начинаещи, като добър старт дават например страницата \href{https://support.rstudio.com/hc/en-us/categories/200098757-Learn-R}{Learn R} на Rstudio или книгата \emph{Mastering Software Development in R} \citep{Peng2017}.
+
+Примерите разглеждани в ръководството разроботенни, стартирани и изпълненени на потребителската машина с \href{https://cran.r-project.org/}{R} версия 4.0.3 \href{https://rstudio.com/products/rstudio/}{RStudio} версия 1.3.
+За голяма част от използваните в ръководството примери инсталирането на RStudio не е необходимо и би могло да се изпълнят без интегрираната среда за разработка. Поради интеграция на средата с част от използваните в примерите пакети инсталирането на средата е препоръчително и би улеснила създаването и изпълнението на кода.
+
+Пакетите използвани в примерите.
+
+\hypertarget{dataux434ux430ux43dux43dux438}{%
+\chapter{Data\textbar Данни}\label{dataux434ux430ux43dux43dux438}}
+
+Some \emph{significant} applications are demonstrated in this chapter.
+
+\hypertarget{ux447ux435ux442ux435ux43dux435-ux43dux430-ux442ux430ux431ux43bux438ux447ux43dux438-ux434ux430ux43dux43dux438}{%
+\section{Четене на таблични данни}\label{ux447ux435ux442ux435ux43dux435-ux43dux430-ux442ux430ux431ux43bux438ux447ux43dux438-ux434ux430ux43dux43dux438}}
+
+\hypertarget{ux447ux435ux442ux435ux43dux435-ux43dux430-ux443ux435ux431-ux431ux430ux437ux438ux440ux430ux43dux438-ux434ux430ux43dux43dux438}{%
+\section{Четене на уеб базирани данни}\label{ux447ux435ux442ux435ux43dux435-ux43dux430-ux443ux435ux431-ux431ux430ux437ux438ux440ux430ux43dux438-ux434ux430ux43dux43dux438}}
+
+\hypertarget{ux447ux435ux442ux435ux43dux435-ux43dux430-sdmx}{%
+\section{Четене на SDMX}\label{ux447ux435ux442ux435ux43dux435-ux43dux430-sdmx}}
+
+\hypertarget{ux447ux435ux442ux435ux43dux435-ux43dux430-xbr}{%
+\section{Четене на XBR}\label{ux447ux435ux442ux435ux43dux435-ux43dux430-xbr}}
+
+\hypertarget{ux43eux43fux442ux438ux447ux43dux43eux442ux43e-ux440ux430ux437ux43fux43eux437ux43dux430ux432ux430ux43dux435-ux43dux430-ux441ux438ux43cux432ux43eux43bux438-ocr}{%
+\section{Оптичното разпознаване на символи (OCR)}\label{ux43eux43fux442ux438ux447ux43dux43eux442ux43e-ux440ux430ux437ux43fux43eux437ux43dux430ux432ux430ux43dux435-ux43dux430-ux441ux438ux43cux432ux43eux43bux438-ocr}}
+
+\hypertarget{ux438ux437ux432ux43bux438ux447ux430ux43dux435-ux434ux430ux43dux43dux438-ux43eux442-ux443ux435ux431ux441ux430ux439ux442ux43eux432ux435-web-scraping}{%
+\section{Извличане данни от уебсайтове (Web Scraping)}\label{ux438ux437ux432ux43bux438ux447ux430ux43dux435-ux434ux430ux43dux43dux438-ux43eux442-ux443ux435ux431ux441ux430ux439ux442ux43eux432ux435-web-scraping}}
+
+\hypertarget{literature}{%
+\chapter{Literature}\label{literature}}
+
+Here is a review of existing methods. фффдфсдфсф
+
+\hypertarget{methods}{%
+\chapter{Methods}\label{methods}}
+
+We describe our methods in this chapter.
+
+\hypertarget{applications}{%
+\chapter{Applications}\label{applications}}
+
+Some \emph{significant} applications are demonstrated in this chapter.
+
+\hypertarget{example-one}{%
+\section{Example one}\label{example-one}}
+
+\hypertarget{example-two}{%
+\section{Example two}\label{example-two}}
+
+\hypertarget{final-words}{%
+\chapter{Final Words}\label{final-words}}
+
+We have finished a nice book.
+
+  \bibliography{book.bib,packages.bib}
+
+\end{document}

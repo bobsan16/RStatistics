@@ -1,0 +1,8 @@
+# Представяне на резултатите  {#results} 
+
+Some _significant_ applications are demonstrated in this chapter.
+
+## R Markdown {#results-RMarkdown} 
+
+## Shiny {#Shiny-Shiny} 
+
