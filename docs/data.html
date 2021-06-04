@@ -200,7 +200,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
 <li>Портал за отворени данни <a href="https://data.egov.bg/" class="uri">https://data.egov.bg/</a></li>
 </ul>
-<p>Направен е кратък преглед на два основни стандарта предназначени за пренос на данни, <em>Съвремени решения за обмен на статистически данни</em> <span class="citation">(<a href="references.html#ref-Velkov2009" role="doc-biblioref">Велков 2009</a>)</span>, това са Стандарта за обмен на статистически данни и мета данни (SDMX –Statistical Data and Metadata eXchange) и Разширеният език за бизнес отчетност (Extensible Business Reporting Language - XBRL), които широко използвани за обмен на статистически данни. Разглежданите стандарти са насочени съответно предимно към обмена на агрегирани статистически данни - SDMX и докладването на индивидуални бизнес данни - XBRL, но могат да имат и по-широко приложение, поради лесната им интерпретация за конкретните бизнес нужди.</p>
+<p>Направен е кратък преглед на два основни стандарта предназначени за пренос на данни, <em>Съвремени решения за обмен на статистически данни</em> <span class="citation">(<a href="references.html#ref-Velkov2009" role="doc-biblioref">Велков 2009</a>)</span>, това са Стандарта за обмен на статистически данни и мета данни (SDMX –Statistical Data and Metadata eXchange) и Разширеният език за бизнес отчетност (Extensible Business Reporting Language - XBRL), които широко използвани при обменна на статистически данни. Разглежданите стандарти са насочени съответно предимно към обмена на агрегирани статистически данни - SDMX и докладването на индивидуални бизнес данни - XBRL, но могат да имат и по-широко приложение, поради лесната им интерпретация за конкретните бизнес нужди.</p>
 <div id="tab-data" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Четене на таблични данни</h2>
 <p><em>Препоръката на W3C от 17 декември 2015</em> <span class="citation">(<a href="references.html#ref-W3Ctab" role="doc-biblioref"><span>“Model for Tabular Data and Metadata on the Web”</span> 2015</a>)</span>, дефинира табличните данни по следния начин:</p>
@@ -302,7 +302,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="web-data" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Четене на уеб базирани данни</h2>
-<p>TODO</p>
+<p>Примера разгледан в т. 2.1.3 показа, че не винаги можем да използваме желаната от нас функция за да четем данните директно от уеб (url). Това налага, понякога, да свалим данните локално преди да използваме необходимата ни функция. В примера използвамхме за целта пакета <a href="https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html">httr</a>. но самия пакет е проектиран да създаде съответствие с HTTP протокола и има по-големи възможности.</p>
+<p>Например да видим заглавната част на отговор получен в следствие на направената GET заявка:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="data.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">headers</span>(<span class="fu">GET</span>(url_address))</span></code></pre></div>
+<pre><code>## $date
+## [1] &quot;Fri, 04 Jun 2021 14:24:24 GMT&quot;
+## 
+## $server
+## [1] &quot;Apache&quot;
+## 
+## $`last-modified`
+## [1] &quot;Thu, 13 May 2021 10:38:38 GMT&quot;
+## 
+## $etag
+## [1] &quot;\&quot;25cfd66-b239-5c233bae14780\&quot;&quot;
+## 
+## $`accept-ranges`
+## [1] &quot;bytes&quot;
+## 
+## $`content-length`
+## [1] &quot;45625&quot;
+## 
+## $`content-type`
+## [1] &quot;text/plain&quot;
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;insensitive&quot; &quot;list&quot;</code></pre>
 </div>
 <div id="sdmx-data" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Стандартът SDMX</h2>
