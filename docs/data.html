@@ -290,7 +290,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="tab-data-spreadsheets" class="section level3" number="2.1.3">
 <h3><span class="header-section-number">2.1.3</span> Електронни таблици (spreadsheets)</h3>
-<p>В примера ще използваме данните в справката <em>Депозити на нефинансови предприятия, домакинства и НТООД по количествени категории (dep_dyn_qcat_bg)</em> от статистика на депозити и кредити по количествени категории и икономически дейности публикувана от БНБ. Функцията <strong>read_excel</strong> от пакета <strong>readxl</strong> не може да чета данните от url, поради това в примера се използва пакета <strong>httr</strong> за да направим HTTP GET заявка към уеб адреса и да запишем съдържанието на отговора във временен файл.</p>
+<p>В примера ще използваме данните в справката <em>Депозити на нефинансови предприятия, домакинства и НТООД по количествени категории (dep_dyn_qcat_bg)</em> от <a href="https://www.bnb.bg/Statistics/StMonetaryInterestRate/StDepositsAndCredits/StDCDataSeries/index.htm">статистиката на депозити и кредити по количествени категории и икономически дейности</a> публикувана от БНБ. Функцията <strong>read_excel</strong> от пакета <strong>readxl</strong> не може да чета данните от url, поради това в примера се използва пакета <strong>httr</strong> за да направим HTTP GET заявка към уеб адреса и да запишем съдържанието на отговора във временен файл.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="data.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb7-2"><a href="data.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
 <span id="cb7-3"><a href="data.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -299,6 +299,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-6"><a href="data.html#cb7-6" aria-hidden="true" tabindex="-1"></a>bnb_dep_dyn_qcat_bg <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(tf, <span class="at">skip =</span> <span class="dv">1</span>)</span>
 <span id="cb7-7"><a href="data.html#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-8"><a href="data.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(tf)</span></code></pre></div>
+<p>Предварителния преглед на данните е показал, че първия ред е заглавието на таблицата, поради което използваме аргумента <em>skip</em> за да го пропуснем. На този етап се абстрахираме от факта, че данните не са добре структурирани (има слети клетки, колони без имена) за машина обработка, като в следващете част на ръководството ще показем как тези недостатъци могът да бъдат коригирани.</p>
 </div>
 </div>
 <div id="web-data" class="section level2" number="2.2">
