@@ -3,6 +3,7 @@ data
 tab-data
 tab-data-csv
 tab-data-tsv
+tab-data-spreadsheets
 web-data
 sdmx-data
 sdmx-data_about
@@ -18,4 +19,3 @@ results
 results-RMarkdown
 Shiny-Shiny
 summary
-tab-data-spreadsheets

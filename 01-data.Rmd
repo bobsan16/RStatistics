@@ -106,22 +106,22 @@ estat_geo_dic <- read_tsv(url_file_path, col_names = c("Code", "Description"))
 
 ### Електронни таблици (spreadsheets) {#tab-data-spreadsheets}
 
-В примера ще използваме данните в справката *Депозити на нефинансови предприятия, домакинства и НТООД по количествени категории (dep_dyn_qcat_bg)* от [статистиката на депозити и кредити по количествени категории и икономически дейности](https://www.bnb.bg/Statistics/StMonetaryInterestRate/StDepositsAndCredits/StDCDataSeries/index.htm) публикувана от БНБ. Функцията **read_excel** от пакета **readxl** не може да чета данните от url, поради това в примера се използва пакета **httr** за да направим HTTP GET заявка към уеб адреса и да запишем съдържанието на отговора във временен файл. 
+В примера ще използваме данните в справката *Депозити на нефинансови предприятия, финансови предприятия И домакинства и НТООД по количествени категории (dep_dyn_qcat_bg)* от [статистиката на депозити и кредити по количествени категории и икономически дейности](https://www.bnb.bg/Statistics/StMonetaryInterestRate/StDepositsAndCredits/StDCDeposits/StDCDepositsDataSeries/index.htm) публикувана от БНБ. Функцията **read_excel** от пакета **readxl** не може да чета данните от url, поради това в примера се използва пакета **httr** за да направим HTTP GET заявка към уеб адреса и да запишем съдържанието на отговора във временен файл. 
 
 ```{r tab-data-spreadsheets_1, message=FALSE}
 
 library(readxl)
 library(httr)
 
-url_address <- "https://www.bnb.bg/bnbweb/groups/public/documents/bnb_download/dep_dyn_qcat_bg.xls"
-writeBin(content(GET(url_address), "raw"), file.path(tf <- tempfile(fileext = ".xls")))
+url_address <- "https://www.bnb.bg/bnbweb/groups/public/documents/bnb_download/dep_dyn_qcat_bg.xlsx"
+writeBin(content(GET(url_address), "raw"), file.path(tf <- tempfile(fileext = ".xlsx")))
 bnb_dep_dyn_qcat_bg <- read_excel(tf, skip = 1)
 
 rm(tf)
 ```
 
 
-Предварителния преглед на данните е показал, че първия ред е заглавието на таблицата, поради което използваме аргумента *skip* за да го пропуснем. На този етап се абстрахираме от факта, че данните не са добре структурирани (има слети клетки, колони без имена) за машина обработка, като в следващете част на ръководството ще показем как тези недостатъци могът да бъдат коригирани.  
+Предварителния преглед на данните е показал, че първия ред е заглавието на таблицата, поради което използваме аргумента *skip* за да го пропуснем. На този етап се абстрахираме от факта, че данните не са добре структурирани (има слети клетки, колони без имена) за машина обработка, като в следващите част на ръководството ще покажем как тези недостатъци могат да бъдат коригирани.  
 
 ```{r tab-data-spreadsheets_2, include = FALSE}
 rm(tf)
@@ -198,11 +198,12 @@ TODO
 
 ## Извличане данни от уебсайтове (Web Scraping) {#web_scraping-data}
  
-Според предварителните познания за структурата и съдържанието на уебсайтове,  може да се разграничат дава вида извличане на данни:  
+Според предварителните познания за структурата и съдържанието на уебсайтове,  може да се разграничат два вида извличане на данни:  
 https://webgate.ec.europa.eu/fpfis/mwikis/essnetbigdata/images/2/27/BDES_2018_WP2_Presentation.pdf  
 
 
-Specific web scraping: both structure and (type of) content of ebsites to be scraped are perfectly known 
+*Специфично* – когато като структурата, така и съдържание на уеб сайтовете са напълно известни.
 
-Generic web scraping: no a priori knowledge on the structure and content is available and the whole websites must be scraped and processed in order to infer relevant information  
+*Общо* – когото не са налични априорни познания за структурата и съдържанието, поради което цялото съдържание на уебсайтове трябва да бъде извлечено и обработено за може да се направи извод за съответната информация.
+
 
